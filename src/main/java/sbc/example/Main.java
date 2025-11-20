@@ -1,4 +1,6 @@
 package sbc.example;
+import java.util.Collection;
+
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.definition.KiePackage;
@@ -6,13 +8,11 @@ import org.kie.api.definition.rule.Rule;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
-import java.util.Collection;
-
 
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Hello and welcome!");
+        System.out.println("Bienvenido a la pasteleria de Golosolandiapostres!");
 
         KieServices kieServices = KieServices.Factory.get();
         KieContainer kieContainer = kieServices.getKieClasspathContainer();
