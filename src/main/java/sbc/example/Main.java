@@ -1,5 +1,6 @@
 package sbc.example;
 import java.util.Collection;
+import java.util.List;
 
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
@@ -32,6 +33,15 @@ public class Main {
         message.setMessage( "Hello World" );
         message.setStatus( Message.HELLO );
         session.insert( message );
+
+  
+        List<Receta> recetas = RecetasDatos.crearRecetas();
+            for (Receta r : recetas) {
+            session.insert(r);
+            session.insert(new RecetaPuntuada(r));
+}
+
+        
         //Fire the rules
         session.fireAllRules();
 
