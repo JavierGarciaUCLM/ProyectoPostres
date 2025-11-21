@@ -7,7 +7,7 @@ import sbc.example.Evidencia
 import sbc.example.Dificultad
 
 
-// update($rp); --> Cambio de puntuaciones
+// update($rp); --> Cambio de puntuaciones en todos
 
 
 rule "Debug - mostrar recetas -Pruebaa"
@@ -21,28 +21,28 @@ end
 // tiempo compatible +20 puntos
 rule "Tiempo compatible"
 when
-    $u  : Usuario( $tiempoDisponible : tiempoDisponible ) //guardo tiempo del usuario
-    $r  : Receta( tiempoPreparacion <= $tiempoDisponible ) //pillo receta(s) donde el tiempo de preparación es menor o igual al disponible
-    $rp : RecetaPuntuada( receta == $r ) //pillo la receta puntuada asociada a esa receta
+    $u  : Usuario($tiempoDisponible : tiempoDisponible) //guardo tiempo del usuario
+    $r  : Receta(tiempoPreparacion <= $tiempoDisponible) //pillo receta(s) donde el tiempo de preparación es menor o igual al disponible
+    $rp : RecetaPuntuada(receta == $r) //pillo la receta puntuada asociada a esa receta
 then
     $rp.addPuntos(20);
     $rp.incrementarCoincidencias(); //incremento coincidencias
 
-    insert( new Evidencia($r, "Tiempo compatible: usuario tiene " + $tiempoDisponible + " min y la receta requiere " + $r.getTiempoPreparacion() + " min") );
+    insert(new Evidencia($r, "Tiempo compatible: usuario tiene " + $tiempoDisponible + " min y la receta requiere " + $r.getTiempoPreparacion() + " min"));
     update($rp);
 end
 
 // tiempo menor a 15m +15 puntos
 rule "Tiempo menor a 10 minutos"
 when
-    $u  : Usuario( $tiempoDisponible : tiempoDisponible ) //guardo tiempo del usuario
+    $u  : Usuario($tiempoDisponible : tiempoDisponible) //guardo tiempo del usuario
     $r  : Receta(tiempoPreparacion <= $tiempoDisponible, tiempoPreparacion < 10) //pillo receta(s) donde el tiempo de preparación es menor o igual al disponible y menor a 10 minutos
-    $rp : RecetaPuntuada( receta == $r ) //pillo la receta puntuada asociada a esa receta
+    $rp : RecetaPuntuada(receta == $r) //pillo la receta puntuada asociada a esa receta
 then
     $rp.addPuntos(15);
     $rp.incrementarCoincidencias(); //incremento coincidencias
 
-    insert( new Evidencia( $r, "Receta rápida: menos de 10 minutos ("+ $r.getTiempoPreparacion() + " min)") );
+    insert(new Evidencia($r, "Receta rápida: menos de 10 minutos ("+ $r.getTiempoPreparacion() + " min)"));
     update($rp);
 end
 
@@ -52,21 +52,21 @@ end
 //Usuario sin horno y receta necesita horno 
 rule "Usuario sin horno y receta necesita horno"
 when
-    Usuario( tieneHorno == false ) //pillo usuario que no tiene horno
-    $r  : Receta( necesitaHorno == true ) //pillo receta(s) donde la receta necesita horno
-    $rp : RecetaPuntuada( receta == $r ) //pillo la receta puntuada asociada a esa receta
+    Usuario(tieneHorno == false) //pillo usuario que no tiene horno
+    $r  : Receta(necesitaHorno == true) //pillo receta(s) donde la receta necesita horno
+    $rp : RecetaPuntuada(receta == $r) //pillo la receta puntuada asociada a esa receta
 then
     $rp.addPuntos(-1000); //simbolico para cargarme estas recetas
-    insert( new Evidencia($r, "Descartada: la receta necesita horno y el usuario no dispone de horno") );
+    insert(new Evidencia($r, "Descartada: la receta necesita horno y el usuario no dispone de horno"));
     update($rp);
 end
 
 //usuario sin horno, receta sin horno +20 puntos
 rule "Coincidencia horno sin horno"
 when
-    Usuario( tieneHorno == false ) //pillo usuario que no tiene horno
-    $r  : Receta( necesitaHorno == false ) //pillo receta(s) donde la receta no necesita horno
-    $rp : RecetaPuntuada( receta == $r ) //pillo la receta puntuada asociada a esa receta
+    Usuario(tieneHorno == false) //pillo usuario que no tiene horno
+    $r  : Receta(necesitaHorno == false) //pillo receta(s) donde la receta no necesita horno
+    $rp : RecetaPuntuada(receta == $r) //pillo la receta puntuada asociada a esa receta
 then
     $rp.addPuntos(20);
     $rp.incrementarCoincidencias();
@@ -77,11 +77,36 @@ end
 // A todas las recetas con dificultad fácil se les hace +20 puntos
 rule "Dificultad fácil"
 when
-    $r  : Receta( dificultad == Dificultad.Facil ) //pillo receta(s) donde la dificultad es facil
-    $rp : RecetaPuntuada( receta == $r ) //pillo la receta puntuada asociada a esa receta
+    $r  : Receta(dificultad == Dificultad.Facil) //pillo receta(s) donde la dificultad es facil
+    $rp : RecetaPuntuada(receta == $r) //pillo la receta puntuada asociada a esa receta
 then
     $rp.addPuntos(15);
     $rp.incrementarCoincidencias();
     insert( new Evidencia($r, "Dificultad fácil: se suman 15 puntos") );
+    update($rp);
+end
+
+// Ingrediente preferido principal +20 puntos
+rule "Ingrediente preferido como ingrediente principal"
+when
+    $u  : Usuario(ingredientePreferido != null, $ingPref : ingredientePreferido ) //miro que ponga algo y si si, lo guardo
+    $r  : Receta(ingredientePrincipal != null, ingredientePrincipal.toLowerCase().contains($ingPref.toLowerCase())) //pillo receta(s) donde el ingrediente principal es igual al ingrediente preferido
+    $rp : RecetaPuntuada(receta == $r )
+then
+    $rp.addPuntos(20);
+    $rp.incrementarCoincidencias();
+    insert(new Evidencia($r, "Ingrediente preferido como principal: " + $ingPref + " (+20 puntos)"));
+    update($rp);
+end
+
+// 3 o más coincidencias +10 puntos
+rule "Coincidencia multiple (3 o mas)"
+    no-loop true //quito recursividad
+when
+    $rp : RecetaPuntuada(coincidencias >= 3, $receta : receta) //pillo la receta puntuada asociada a esa receta y donde las coincidencias son mayor o igual a 3
+    $r  : Receta(this == $receta)
+tieneHorno
+    $rp.addPuntos(10);
+    insert(new Evidencia($r, "Coincidencia múltiple: 3 o más criterios cumplidos (+10 puntos)"));
     update($rp);
 end
