@@ -5,6 +5,8 @@ import sbc.example.Receta
 import sbc.example.RecetaPuntuada
 import sbc.example.Evidencia
 import sbc.example.Dificultad
+import sbc.example.Recomendacion;
+
 
 
 // update($rp); --> Cambio de puntuaciones en todos
@@ -108,4 +110,17 @@ then
     $rp.addPuntos(10);
     insert(new Evidencia($r, "Coincidencia múltiple: 3 o más criterios cumplidos (+10 puntos)"));
     update($rp);
+end
+
+//recomendación final
+rule "Crear recomendacion para mejor receta"
+    salience 1 //pa que empiece antes que las otras reglas
+when
+    //$mejor es una RecetaPuntuada
+    $mejor : RecetaPuntuada($puntuacionMax : puntuacion)
+    not RecetaPuntuada(puntuacion > $puntuacionMax) //regla de la burbuja
+then
+    Recomendacion rec = new Recomendacion($mejor.getReceta(), $puntuacionMax);
+    insert(rec);
+    System.out.println("\n>>> Receta candidata recomendada (dentro de reglas): " + $mejor.getReceta().getNombre() + " con " + $puntuacionMax + " puntos");
 end
