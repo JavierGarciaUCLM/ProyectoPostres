@@ -82,7 +82,7 @@ when
 then
     $rp.addPuntos(15);
     $rp.incrementarCoincidencias();
-    insert( new Evidencia($r, "Dificultad fácil: se suman 15 puntos") );
+    insert( new Evidencia($r, "Dificultad fácil: se suman 15 puntos"));
     update($rp);
 end
 
@@ -101,11 +101,10 @@ end
 
 // 3 o más coincidencias +10 puntos
 rule "Coincidencia multiple (3 o mas)"
-    no-loop true //quito recursividad
 when
-    $rp: RecetaPuntuada(coincidencias >= 3, $receta : receta) //pillo la receta puntuada asociada a esa receta y donde las coincidencias son mayor o igual a 3
-    $r: Receta(this == $receta)
-tieneHorno
+    $rp : RecetaPuntuada(coincidencias >= 3, $receta : receta)
+    $r : Receta(this == $receta)
+then
     $rp.addPuntos(10);
     insert(new Evidencia($r, "Coincidencia múltiple: 3 o más criterios cumplidos (+10 puntos)"));
     update($rp);
