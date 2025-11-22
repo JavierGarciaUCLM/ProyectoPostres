@@ -1,15 +1,18 @@
-package sbc.example
+package sbc.example;
 
-import sbc.example.Usuario
-import sbc.example.Receta
-import sbc.example.RecetaPuntuada
-import sbc.example.Evidencia
-import sbc.example.Dificultad
+import sbc.example.Usuario;
+import sbc.example.Receta;
+import sbc.example.RecetaPuntuada;
+import sbc.example.Evidencia;
+import sbc.example.Dificultad;
 import sbc.example.Recomendacion;
+dialect "java";
 
 
 
 // update($rp); --> Cambio de puntuaciones en todos
+// not Evidencia(receta == $r, mensaje.contains("...")) --> En todos controlo que la evidencia ya está, así no repito regla
+//que fue un problema del desarrollo, un bucle infinito de reglas
 
 
 rule "Debug - mostrar recetas -Pruebaa"
@@ -26,6 +29,7 @@ when
     $u : Usuario($tiempoDisponible : tiempoDisponible) //guardo tiempo del usuario
     $r : Receta(tiempoPreparacion <= $tiempoDisponible) //pillo receta(s) donde el tiempo de preparación es menor o igual al disponible
     $rp : RecetaPuntuada(receta == $r) //pillo la receta puntuada asociada a esa receta
+    not Evidencia(receta == $r, mensaje.contains("Tiempo compatible"))
 then
     $rp.addPuntos(20);
     $rp.incrementarCoincidencias(); //incremento coincidencias
@@ -40,11 +44,12 @@ when
     $u : Usuario($tiempoDisponible : tiempoDisponible) //guardo tiempo del usuario
     $r : Receta(tiempoPreparacion <= $tiempoDisponible, tiempoPreparacion < 10) //pillo receta(s) donde el tiempo de preparación es menor o igual al disponible y menor a 10 minutos
     $rp : RecetaPuntuada(receta == $r) //pillo la receta puntuada asociada a esa receta
+    not Evidencia(receta == $r, mensaje.contains("Receta rápida"))
 then
     $rp.addPuntos(15);
     $rp.incrementarCoincidencias(); //incremento coincidencias
 
-    insert(new Evidencia($r, "Receta rápida: menos de 10 minutos ("+ $r.getTiempoPreparacion() + " min)"));
+    insert(new Evidencia($r, "Receta rápida: menos de 10 minutos ("+ $r.getTiempoPreparacion() + " min) Se suman 15 puntos"));
     update($rp);
 end
 
@@ -57,6 +62,7 @@ when
     Usuario(tieneHorno == false) //pillo usuario que no tiene horno
     $r : Receta(necesitaHorno == true) //pillo receta(s) donde la receta necesita horno
     $rp : RecetaPuntuada(receta == $r) //pillo la receta puntuada asociada a esa receta
+    not Evidencia(receta == $r, mensaje.contains("Descartada"))
 then
     $rp.addPuntos(-1000); //simbolico para cargarme estas recetas
     insert(new Evidencia($r, "Descartada: la receta necesita horno y el usuario no dispone de horno"));
@@ -69,6 +75,7 @@ when
     Usuario(tieneHorno == false) //pillo usuario que no tiene horno
     $r : Receta(necesitaHorno == false) //pillo receta(s) donde la receta no necesita horno
     $rp : RecetaPuntuada(receta == $r) //pillo la receta puntuada asociada a esa receta
+    not Evidencia(receta == $r, mensaje.contains("Coincidencia sobre hornos"))
 then
     $rp.addPuntos(20);
     $rp.incrementarCoincidencias();
@@ -81,6 +88,7 @@ rule "Dificultad fácil"
 when
     $r : Receta(dificultad == Dificultad.Facil) //pillo receta(s) donde la dificultad es facil
     $rp : RecetaPuntuada(receta == $r) //pillo la receta puntuada asociada a esa receta
+    not Evidencia(receta == $r, mensaje.contains("Dificultad fácil"))
 then
     $rp.addPuntos(15);
     $rp.incrementarCoincidencias();
@@ -94,6 +102,7 @@ when
     $u : Usuario(ingredientePreferido != null, $ingPref : ingredientePreferido ) //miro que ponga algo y si si, lo guardo
     $r : Receta(ingredientePrincipal != null, ingredientePrincipal.toLowerCase().contains($ingPref.toLowerCase())) //pillo receta(s) donde el ingrediente principal es igual al ingrediente preferido
     $rp : RecetaPuntuada(receta == $r )
+    not Evidencia(receta == $r, mensaje.contains("Ingrediente preferido"))
 then
     $rp.addPuntos(20);
     $rp.incrementarCoincidencias();
@@ -106,6 +115,7 @@ rule "Coincidencia multiple (3 o mas)"
 when
     $rp : RecetaPuntuada(coincidencias >= 3, $receta : receta)
     $r : Receta(this == $receta)
+    not Evidencia(receta == $r, mensaje.contains("Coincidencia múltiple"))
 then
     $rp.addPuntos(10);
     insert(new Evidencia($r, "Coincidencia múltiple: 3 o más criterios cumplidos (+10 puntos)"));
@@ -114,7 +124,7 @@ end
 
 //recomendación final
 rule "Crear recomendacion para mejor receta"
-    salience 1 //pa que empiece antes que las otras reglas
+    salience -100 //pa que se ejecute al final, despues de calcular puntuaciones
 when
     //$mejor es una RecetaPuntuada
     $mejor : RecetaPuntuada($puntuacionMax : puntuacion)

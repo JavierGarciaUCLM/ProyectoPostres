@@ -123,6 +123,34 @@ public class Main {
 
         // Disparar reglas
         session.fireAllRules();
+        Recomendacion mejorRec = null;
+
+        //LA mejor receta, única
+        for (Object obj : session.getObjects()) {
+            if (obj instanceof Recomendacion) {
+                mejorRec = (Recomendacion) obj;
+            }
+        }
+
+        if (mejorRec != null) {
+            System.out.println("El recetario te recomienda...\n");
+            System.out.println("Receta: " + mejorRec.getReceta().getNombre());
+            System.out.println("Puntuación final: " + mejorRec.getPuntuacionFinal());
+            System.out.println("\nMotivos:");
+
+            //evidencias de la mejor
+            for (Object obj : session.getObjects()) {
+                if (obj instanceof Evidencia) {
+                    Evidencia ev = (Evidencia) obj; //casteo objeto a evidencia
+                    if (ev.getReceta() == mejorRec.getReceta()) {
+                        System.out.println(" - " + ev.getMensaje());
+                    }
+                }
+            }
+            System.out.println("Fin.\n");
+        } else {
+        System.out.println("\nNo se ha podido generar una recomendación.");
+        }
         session.dispose();
     }
 

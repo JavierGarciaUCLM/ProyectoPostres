@@ -16,6 +16,7 @@ public class RecetasDatos {
         r1.setIngredientePrincipal("lácteos");
         r1.setTipoPostre("tarta");
         r1.setNumeroIngredientes(5);
+        list.add(r1);
 
         Receta r2 = new Receta("Tarta de galletas y chocolate");
         r2.setTiempoPreparacion(12);
@@ -24,7 +25,7 @@ public class RecetasDatos {
         r2.setIngredientePrincipal("chocolate");
         r2.setTipoPostre("tarta");
         r2.setNumeroIngredientes(4);
-
+        list.add(r2);
         Receta r3 = new Receta("Flan casero rápido");
         r3.setTiempoPreparacion(8);
         r3.setNecesitaHorno(false);
@@ -32,7 +33,7 @@ public class RecetasDatos {
         r3.setIngredientePrincipal("lácteos");
         r3.setTipoPostre("flan");
         r3.setNumeroIngredientes(3);
-
+        list.add(r3);
         Receta r4 = new Receta("Bizcocho clásico esponjoso");
         r4.setTiempoPreparacion(25);
         r4.setNecesitaHorno(true);
@@ -40,7 +41,7 @@ public class RecetasDatos {
         r4.setIngredientePrincipal("lácteos");
         r4.setTipoPostre("bizcocho");
         r4.setNumeroIngredientes(7);
-
+        list.add(r4);
         Receta r5 = new Receta("Brownie exprés");
         r5.setTiempoPreparacion(9);
         r5.setNecesitaHorno(false);
@@ -48,7 +49,7 @@ public class RecetasDatos {
         r5.setIngredientePrincipal("chocolate");
         r5.setTipoPostre("brownie");
         r5.setNumeroIngredientes(4);
-
+        list.add(r5);
         Receta r6 = new Receta("Helado casero de frutas");
         r6.setTiempoPreparacion(5);
         r6.setNecesitaHorno(false);
@@ -56,7 +57,7 @@ public class RecetasDatos {
         r6.setIngredientePrincipal("fruta");
         r6.setTipoPostre("helado");
         r6.setNumeroIngredientes(3);
-
+        list.add(r6);
         Receta r7 = new Receta("Tiramisú fácil");
         r7.setTiempoPreparacion(10);
         r7.setNecesitaHorno(false);
@@ -64,7 +65,7 @@ public class RecetasDatos {
         r7.setIngredientePrincipal("lácteos");
         r7.setTipoPostre("tarta");
         r7.setNumeroIngredientes(6);
-
+        list.add(r7);
         Receta r8 = new Receta("Galletas de avena sin horno");
         r8.setTiempoPreparacion(7);
         r8.setNecesitaHorno(false);
@@ -72,7 +73,7 @@ public class RecetasDatos {
         r8.setIngredientePrincipal("avena");
         r8.setTipoPostre("galletas");
         r8.setNumeroIngredientes(3);
-
+        list.add(r8);
         Receta r9 = new Receta("Tarta de limón cremosa");
         r9.setTiempoPreparacion(14);
         r9.setNecesitaHorno(false);
@@ -80,7 +81,7 @@ public class RecetasDatos {
         r9.setIngredientePrincipal("limón");
         r9.setTipoPostre("tarta");
         r9.setNumeroIngredientes(6);
-
+        list.add(r9);
         Receta r10 = new Receta("Tarta de chocolate al horno");
         r10.setTiempoPreparacion(20);
         r10.setNecesitaHorno(true);
@@ -88,7 +89,7 @@ public class RecetasDatos {
         r10.setIngredientePrincipal("chocolate");
         r10.setTipoPostre("tarta");
         r10.setNumeroIngredientes(7);
-
+        list.add(r10);
         Receta r11 = new Receta("Mousse de chocolate");
         r11.setTiempoPreparacion(10);
         r11.setNecesitaHorno(false);
@@ -96,7 +97,7 @@ public class RecetasDatos {
         r11.setIngredientePrincipal("chocolate");
         r11.setTipoPostre("mousse");
         r11.setNumeroIngredientes(4);
-
+        list.add(r11);
         Receta r12 = new Receta("Flan de café sin horno");
         r12.setTiempoPreparacion(9);
         r12.setNecesitaHorno(false);
@@ -112,7 +113,7 @@ public class RecetasDatos {
         r13.setIngredientePrincipal("lácteos");
         r13.setTipoPostre("pastel");
         r13.setNumeroIngredientes(6);
-
+        list.add(r13);
         Receta r14 = new Receta("Tarta fría de piña");
         r14.setTiempoPreparacion(8);
         r14.setNecesitaHorno(false);
@@ -120,7 +121,7 @@ public class RecetasDatos {
         r14.setIngredientePrincipal("fruta");
         r14.setTipoPostre("tarta");
         r14.setNumeroIngredientes(4);
-
+        list.add(r14);
         Receta r15 = new Receta("Batido espeso de chocolate");
         r15.setTiempoPreparacion(4);
         r15.setNecesitaHorno(false);
@@ -128,7 +129,7 @@ public class RecetasDatos {
         r15.setIngredientePrincipal("chocolate");
         r15.setTipoPostre("batido");
         r15.setNumeroIngredientes(3);
-
+        list.add(r15);
         Receta r16 = new Receta("Galletas clásicas al horno");
         r16.setTiempoPreparacion(18);
         r16.setNecesitaHorno(true);
@@ -136,7 +137,7 @@ public class RecetasDatos {
         r16.setIngredientePrincipal("avena");
         r16.setTipoPostre("galletas");
         r16.setNumeroIngredientes(6);
-
+        list.add(r16);
         Receta r17 = new Receta("Tarta fría de tres chocolates");
         r17.setTiempoPreparacion(12);
         r17.setNecesitaHorno(false);
@@ -144,7 +145,7 @@ public class RecetasDatos {
         r17.setIngredientePrincipal("chocolate");
         r17.setTipoPostre("tarta");
         r17.setNumeroIngredientes(8);
-
+        list.add(r17);
         Receta r18 = new Receta("Manzanas caramelizadas");
         r18.setTiempoPreparacion(10);
         r18.setNecesitaHorno(false);
@@ -152,7 +153,7 @@ public class RecetasDatos {
         r18.setIngredientePrincipal("fruta");
         r18.setTipoPostre("caramelo");
         r18.setNumeroIngredientes(3);
-
+        list.add(r18);
         Receta r19 = new Receta("Bizcocho de limón");
         r19.setTiempoPreparacion(20);
         r19.setNecesitaHorno(true);
@@ -160,7 +161,7 @@ public class RecetasDatos {
         r19.setIngredientePrincipal("limón");
         r19.setTipoPostre("bizcocho");
         r19.setNumeroIngredientes(7);
-
+        list.add(r19);
         Receta r20 = new Receta("Galletas de mantequilla");
         r20.setTiempoPreparacion(15);
         r20.setNecesitaHorno(true);
@@ -168,7 +169,7 @@ public class RecetasDatos {
         r20.setIngredientePrincipal("lácteos");
         r20.setTipoPostre("galletas");
         r20.setNumeroIngredientes(5);
-
+        list.add(r20);
         Receta r21 = new Receta("Tarta fría de melocotón");
         r21.setTiempoPreparacion(9);
         r21.setNecesitaHorno(false);
@@ -176,7 +177,7 @@ public class RecetasDatos {
         r21.setIngredientePrincipal("fruta");
         r21.setTipoPostre("tarta");
         r21.setNumeroIngredientes(4);
-
+        list.add(r21);
         Receta r22 = new Receta("Crema de chocolate rápida");
         r22.setTiempoPreparacion(6);
         r22.setNecesitaHorno(false);
@@ -184,7 +185,7 @@ public class RecetasDatos {
         r22.setIngredientePrincipal("chocolate");
         r22.setTipoPostre("crema");
         r22.setNumeroIngredientes(3);
-
+        list.add(r22);
         Receta r23 = new Receta("Flan de queso");
         r23.setTiempoPreparacion(11);
         r23.setNecesitaHorno(false);
@@ -192,7 +193,7 @@ public class RecetasDatos {
         r23.setIngredientePrincipal("lácteos");
         r23.setTipoPostre("flan");
         r23.setNumeroIngredientes(5);
-
+        list.add(r23);
         Receta r24 = new Receta("Tarta de avena sin horno");
         r24.setTiempoPreparacion(10);
         r24.setNecesitaHorno(false);
@@ -200,7 +201,7 @@ public class RecetasDatos {
         r24.setIngredientePrincipal("avena");
         r24.setTipoPostre("tarta");
         r24.setNumeroIngredientes(4);
-
+        list.add(r24);
         Receta r25 = new Receta("Tarta de chocolate microondas");
         r25.setTiempoPreparacion(7);
         r25.setNecesitaHorno(false);
@@ -208,7 +209,7 @@ public class RecetasDatos {
         r25.setIngredientePrincipal("chocolate");
         r25.setTipoPostre("tarta");
         r25.setNumeroIngredientes(3);
-
+        list.add(r25);
         Receta r26 = new Receta("Bizcocho rápido microondas");
         r26.setTiempoPreparacion(8);
         r26.setNecesitaHorno(false);
@@ -216,7 +217,7 @@ public class RecetasDatos {
         r26.setIngredientePrincipal("lácteos");
         r26.setTipoPostre("bizcocho");
         r26.setNumeroIngredientes(4);
-
+        list.add(r26);
         Receta r27 = new Receta("Tarta fría de fresa");
         r27.setTiempoPreparacion(9);
         r27.setNecesitaHorno(false);
@@ -224,7 +225,7 @@ public class RecetasDatos {
         r27.setIngredientePrincipal("fruta");
         r27.setTipoPostre("tarta");
         r27.setNumeroIngredientes(5);
-
+        list.add(r27);
         Receta r28 = new Receta("Galletas de cacao");
         r28.setTiempoPreparacion(14);
         r28.setNecesitaHorno(true);
@@ -232,7 +233,7 @@ public class RecetasDatos {
         r28.setIngredientePrincipal("chocolate");
         r28.setTipoPostre("galletas");
         r28.setNumeroIngredientes(6);
-
+        list.add(r28);
         Receta r29 = new Receta("Copa cremosa de yogur");
         r29.setTiempoPreparacion(5);
         r29.setNecesitaHorno(false);
@@ -240,7 +241,7 @@ public class RecetasDatos {
         r29.setIngredientePrincipal("lácteos");
         r29.setTipoPostre("copa");
         r29.setNumeroIngredientes(3);
-
+        list.add(r29);
         Receta r30 = new Receta("Pastel de manzana");
         r30.setTiempoPreparacion(22);
         r30.setNecesitaHorno(true);
@@ -248,7 +249,7 @@ public class RecetasDatos {
         r30.setIngredientePrincipal("fruta");
         r30.setTipoPostre("pastel");
         r30.setNumeroIngredientes(7);
-
+        list.add(r30);
         Receta r31 = new Receta("Mousse de limón");
         r31.setTiempoPreparacion(7);
         r31.setNecesitaHorno(false);
@@ -256,7 +257,7 @@ public class RecetasDatos {
         r31.setIngredientePrincipal("limón");
         r31.setTipoPostre("mousse");
         r31.setNumeroIngredientes(3);
-
+        list.add(r31);
         Receta r32 = new Receta("Tarta fría de mango");
         r32.setTiempoPreparacion(9);
         r32.setNecesitaHorno(false);
@@ -264,7 +265,7 @@ public class RecetasDatos {
         r32.setIngredientePrincipal("fruta");
         r32.setTipoPostre("tarta");
         r32.setNumeroIngredientes(4);
-
+        list.add(r32);
         Receta r33 = new Receta("Bizcocho de cacao");
         r33.setTiempoPreparacion(18);
         r33.setNecesitaHorno(true);
@@ -272,7 +273,7 @@ public class RecetasDatos {
         r33.setIngredientePrincipal("chocolate");
         r33.setTipoPostre("bizcocho");
         r33.setNumeroIngredientes(7);
-
+        list.add(r33);
         Receta r34 = new Receta("Flan de vainilla");
         r34.setTiempoPreparacion(10);
         r34.setNecesitaHorno(false);
@@ -280,7 +281,7 @@ public class RecetasDatos {
         r34.setIngredientePrincipal("lácteos");
         r34.setTipoPostre("flan");
         r34.setNumeroIngredientes(4);
-
+        list.add(r34);
         Receta r35 = new Receta("Tarta fría de Oreo");
         r35.setTiempoPreparacion(12);
         r35.setNecesitaHorno(false);
@@ -288,7 +289,7 @@ public class RecetasDatos {
         r35.setIngredientePrincipal("galletas");
         r35.setTipoPostre("tarta");
         r35.setNumeroIngredientes(5);
-
+        list.add(r35);
         Receta r36 = new Receta("Galletas de limón");
         r36.setTiempoPreparacion(16);
         r36.setNecesitaHorno(true);
@@ -296,7 +297,7 @@ public class RecetasDatos {
         r36.setIngredientePrincipal("limón");
         r36.setTipoPostre("galletas");
         r36.setNumeroIngredientes(6);
-
+        list.add(r36);
         Receta r37 = new Receta("Tarta helada de yogur");
         r37.setTiempoPreparacion(8);
         r37.setNecesitaHorno(false);
@@ -304,7 +305,7 @@ public class RecetasDatos {
         r37.setIngredientePrincipal("lácteos");
         r37.setTipoPostre("tarta");
         r37.setNumeroIngredientes(4);
-
+        list.add(r37);
         Receta r38 = new Receta("Flan de coco");
         r38.setTiempoPreparacion(11);
         r38.setNecesitaHorno(false);
@@ -312,7 +313,7 @@ public class RecetasDatos {
         r38.setIngredientePrincipal("lácteos");
         r38.setTipoPostre("flan");
         r38.setNumeroIngredientes(5);
-
+        list.add(r38);
         Receta r39 = new Receta("Tarta de chocolate crujiente");
         r39.setTiempoPreparacion(13);
         r39.setNecesitaHorno(false);
@@ -320,7 +321,7 @@ public class RecetasDatos {
         r39.setIngredientePrincipal("chocolate");
         r39.setTipoPostre("tarta");
         r39.setNumeroIngredientes(6);
-
+        list.add(r39);
         Receta r40 = new Receta("Tarta de plátano fría");
         r40.setTiempoPreparacion(9);
         r40.setNecesitaHorno(false);
@@ -328,7 +329,7 @@ public class RecetasDatos {
         r40.setIngredientePrincipal("fruta");
         r40.setTipoPostre("tarta");
         r40.setNumeroIngredientes(4);
-
+        list.add(r40);
         Receta r41 = new Receta("Copa triple de chocolate");
         r41.setTiempoPreparacion(10);
         r41.setNecesitaHorno(false);
@@ -336,7 +337,7 @@ public class RecetasDatos {
         r41.setIngredientePrincipal("chocolate");
         r41.setTipoPostre("copa");
         r41.setNumeroIngredientes(5);
-
+        list.add(r41);
         Receta r42 = new Receta("Helado cremoso de limón");
         r42.setTiempoPreparacion(6);
         r42.setNecesitaHorno(false);
@@ -344,7 +345,7 @@ public class RecetasDatos {
         r42.setIngredientePrincipal("limón");
         r42.setTipoPostre("helado");
         r42.setNumeroIngredientes(3);
-
+        list.add(r42);
         Receta r43 = new Receta("Tarta de queso al horno");
         r43.setTiempoPreparacion(20);
         r43.setNecesitaHorno(true);
@@ -352,7 +353,7 @@ public class RecetasDatos {
         r43.setIngredientePrincipal("lácteos");
         r43.setTipoPostre("tarta");
         r43.setNumeroIngredientes(7);
-
+        list.add(r43);
         Receta r44 = new Receta("Pastel frío de chocolate blanco");
         r44.setTiempoPreparacion(12);
         r44.setNecesitaHorno(false);
@@ -360,7 +361,7 @@ public class RecetasDatos {
         r44.setIngredientePrincipal("chocolate");
         r44.setTipoPostre("pastel");
         r44.setNumeroIngredientes(6);
-
+        list.add(r44);
         Receta r45 = new Receta("Galletas de avena y miel");
         r45.setTiempoPreparacion(14);
         r45.setNecesitaHorno(true);
@@ -368,7 +369,7 @@ public class RecetasDatos {
         r45.setIngredientePrincipal("avena");
         r45.setTipoPostre("galletas");
         r45.setNumeroIngredientes(6);
-
+        list.add(r45);
         Receta r46 = new Receta("Tarta fría de yogur y frutas");
         r46.setTiempoPreparacion(10);
         r46.setNecesitaHorno(false);
@@ -376,7 +377,7 @@ public class RecetasDatos {
         r46.setIngredientePrincipal("fruta");
         r46.setTipoPostre("tarta");
         r46.setNumeroIngredientes(5);
-
+        list.add(r46);
         Receta r47 = new Receta("Mousse de fresas");
         r47.setTiempoPreparacion(7);
         r47.setNecesitaHorno(false);
@@ -384,7 +385,7 @@ public class RecetasDatos {
         r47.setIngredientePrincipal("fruta");
         r47.setTipoPostre("mousse");
         r47.setNumeroIngredientes(3);
-
+        list.add(r47);
         Receta r48 = new Receta("Tarta fría de caramelo");
         r48.setTiempoPreparacion(12);
         r48.setNecesitaHorno(false);
@@ -392,7 +393,7 @@ public class RecetasDatos {
         r48.setIngredientePrincipal("caramelo");
         r48.setTipoPostre("tarta");
         r48.setNumeroIngredientes(6);
-
+        list.add(r48);
         Receta r49 = new Receta("Bizcocho de yogur");
         r49.setTiempoPreparacion(18);
         r49.setNecesitaHorno(true);
@@ -400,7 +401,7 @@ public class RecetasDatos {
         r49.setIngredientePrincipal("lácteos");
         r49.setTipoPostre("bizcocho");
         r49.setNumeroIngredientes(6);
-
+        list.add(r49);
         Receta r50 = new Receta("Galletas rápidas sin horno");
         r50.setTiempoPreparacion(6);
         r50.setNecesitaHorno(false);
@@ -408,7 +409,7 @@ public class RecetasDatos {
         r50.setIngredientePrincipal("galletas");
         r50.setTipoPostre("galletas");
         r50.setNumeroIngredientes(3);
-
+        list.add(r50);
         return list;
         }
     }
